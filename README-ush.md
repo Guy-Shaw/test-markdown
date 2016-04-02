@@ -1,15 +1,21 @@
-# ush -- micro-shell -- a very light-weight "shell" library and command
+# ush -- micro-shell
+
+## a very light-weight "shell" library and command
 
 The micro-shell, `ush`, is a very tiny shell with extrememly simple
 syntax, designed for a specific niche.
 
 Before further explanation, here are a few examples:
 
+### Shell one-liner
+
 ```Bash
 
 ush --chdir=/tmp --stdout=tmp-date --command -- date
 
 ```
+
+### C
 
 ```C
 
@@ -26,7 +32,7 @@ ush --chdir=/tmp --stdout=tmp-date --command -- date
     ush_argv(6, cmd_argv);
 ```
 
-As a script ...
+### As a script ...
 
 ```Bash
 
@@ -88,7 +94,7 @@ somewhere in the middle.  The idea is to make it relatively easy
 to do the right thing.
 
 
-# Implementation
+## Implementation
 
 The bulk of `ush` is the library, `libush`.
 The `ush` command is a trivial program.
@@ -130,7 +136,7 @@ If, for example, `ush` is given
 the result is different from `--stdout` followed by `--chdir`.
 
 
-# Scripts
+## Scripts
 
 A `ush` consists of lines which are the exact same structure as
 a command-line argument vector, except that options, the command
@@ -139,7 +145,7 @@ First comes all the option commands, executed in order;
 then comes a line consisting of nothing but '--' to end the options;
 then comes the command path followed by all the arguments.
 
-# Encoding of scripts
+## Encoding of scripts
 
 One thing different about parsing of options from a script
 is that there is a choice of encodings.  The "lines" read in
@@ -149,7 +155,7 @@ or quoted-printable (--encoding=qp) or xnn.
 Null and qouted-printable are widely known, even standards.
 Xnn encoding I just made up.
 
-# Why another encoding?
+## Why another encoding?
 
 The reason for going with yet another encoding is that I like
 to easily edit scripts with a text editor, and use all the Unix
@@ -161,10 +167,10 @@ because the equal sign is so common.  Encoding all lines
 of the form  `--option=value`  to  become  `--option=3Dvalue`
 got to be tiresome.
 
-# Error reporting
+## Error reporting
 
 `libush` uses `libexplain`.  A significant fraction of the
-code in |libush| is dedicated to properly reporting errors.
+code in `libush` is dedicated to properly reporting errors.
 When something goes wrong, the error report included not only
 the errno and the arguments to some function, but also to
 the real cause of the problem.  Any failure of a system call
@@ -177,7 +183,7 @@ file itself, but further up the chain of directories in the
 path leading up to the file.  `libexplain` will report the
 directory that is the true cause of the problem.
 
-# Options and commands
+## Options and commands
 
 --debug
 
@@ -248,17 +254,18 @@ according the given encoding.
 
 This applies only to interpreting a script file.
 
-# No limits
+## No limits
 
 `libush` has no arbitrary limits.  There is no limit imposed
 by |libush| due to fixed size buffers or arrays, etc.
 Line buffers grow as needed.  Arrays for things like
 arguments grow as needed.
 
-# Examples
+## Examples
 
 ush --chdir=/tmp --stdout=tmp-date --command -- date
 
 -- Guy Shaw
+
    gshaw@acm.org
 

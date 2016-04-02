@@ -84,10 +84,9 @@ required to do the job correctly.
 
 So, you have two choices:
 
-  1) use `fork()` and `exec()` and you are on your own
-     for any pre-exec code, or
+1. Use `fork()` and `exec()` and you are on your own for any pre-exec code, or
 
-  2) Punt, and run a child shell.
+2. Punt, and run a child shell.
 
 The micro-shell is meant to be a third option, with functionality
 somewhere in the middle.  The idea is to make it relatively easy

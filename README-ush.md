@@ -2,7 +2,7 @@
 
 ## a very light-weight "shell" library and command
 
-The micro-shell, `ush`, is a very tiny shell with extrememly simple
+The micro-shell, `ush`, is a very tiny shell with extremely simple
 syntax, designed for a specific niche.
 
 Before further explanation, here are a few examples:
@@ -212,7 +212,7 @@ Change directory to _dir_ before running the program.
 
 --umask=_mask_
 
-Call umask() before running the program.
+Call `umask()` before running the program.
 _mask_ can be an octal number or it can be symbolic.
 Symbolic values for mask are like those reported by
 the command, `umask -S`.  That is, some subset of
@@ -241,7 +241,7 @@ This applies only to interpreting a script file.
 
 --replace=_string_
 
-If any argument in a script exactly matches the given <string>,
+If any argument in a script exactly matches the given _string_,
 then splice in all the remaining non-option arguments
 in pace of that one argument.
 

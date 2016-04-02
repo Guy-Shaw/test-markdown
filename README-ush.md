@@ -256,6 +256,59 @@ according the given encoding.
 
 This applies only to interpreting a script file.
 
+## Dependencies
+
+1. libush
+2. libcscript
+3. libexplain
+
+#### libush
+`ush` is both a library and a standalone command.
+`libush` is the collection of functions specific to `ush`.
+
+#### libcscript
+There is such a library as `libcscript`.
+It exists to support a project called "CScript".
+It has some generally useful functions.
+For the micro-shell, rather than refer to that library,
+it does re-use by copying just the subset that it needs
+into its own subdirectory, `libcscript`.  This is done by
+shaking out parts that are referred to in the object files
+just before link time.  What is contained in `libcscript`
+in this Github repository is a "frozen" version of that subset.
+
+The idea is that, although re-use by copy-and-paste is
+considered to be a bad thing, in general, it is a good trade-off
+for software that is to be distributed, because there are few
+developers and possibly many "customers".  It would be bad manners
+to stick them with some new "dependency hell".
+
+#### libexplain
+For now, `ush` is hard-coded to use `libexplain`.
+Later, I may convert to a shim layer that can either use
+`libexplain` or fall back to a simpler built-in explainer.
+
+## Portability
+There is nothing inherently Linux-specific about `ush`,
+but I have not tested it on other Unix-like platforms.
+
+## Cleanliness
+All of `ush`, `libush` and `lincscript` have been written in
+a subset of C and C++.  It compiles clean using a "super-compler"
+that compiles using:
+
+    1. gcc -Wall -Wextra
+    2. clang
+    3. g++
+    4. clang++
+
+## Coding style
+The coding style used for `ush` can most briefly be described as Sun cstyle, but with certain changes.
+They are:
+    + tabs instead of spaces
+    + 4 character indent, instead of 8
+    + no cuddling of braces
+
 ## No limits
 
 `libush` has no arbitrary limits.  There is no limit imposed

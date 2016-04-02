@@ -259,7 +259,7 @@ This applies only to interpreting a script file.
 ## No limits
 
 `libush` has no arbitrary limits.  There is no limit imposed
-by |libush| due to fixed size buffers or arrays, etc.
+by `libush` due to fixed size buffers or arrays, etc.
 Line buffers grow as needed.  Arrays for things like
 arguments grow as needed.
 

@@ -78,6 +78,9 @@ do that.  This is not just some hypothetical.  I have seen much code
 in the wild that calls `system()` with shell scripts and even $variable
 substitution.
 
+Modern python is better.  It has subprocess.call(), which allows
+you to redirect stdin, stdout and stderr.
+
 Even those who try to be a bit more careful would have a hard
 time duplicating the error checking and reporting that would be
 required to do the job correctly.

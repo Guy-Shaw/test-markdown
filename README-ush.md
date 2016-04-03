@@ -3,70 +3,24 @@
 ## a very light-weight "shell" library and command
 
 The micro-shell, `ush`, is a very tiny shell with extremely simple
-syntax, designed for a specific niche.
+syntax.  It is designed to provide just enough functionality
+to cover 80-90% of the use cases of `system()` and `exec()`
+functions in other languages, but more safely and efficiently.
 
-Before further explanation, here are a few examples:
-
-### Shell one-liner
-
-```Bash
-
-ush --chdir=/tmp --stdout=tmp-date --command -- date
-
-```
-
-### C
-
-```C
-
-    char *cmd_argv[] = {
-        "--fork",
-        "--chdir=/tmp",
-        "--stdout=tmp-date",
-        "--command",
-        "--",
-        "date",
-        NULL
-    };
-
-    ush_argv(6, cmd_argv);
-```
-
-### As a script ...
-
-```Bash
-
-/path/to/script
-
-```
-
-where script is:
-
-
-```Bash
-
-#! /usr/local/bin/ush --encoding=xnn
-
---append-argv
---
-ls
---color=tty
---time-style=+%Y-%m-%d\x20%H:%M
-
-```
-
-The micro-shell, `ush`, is more or less like the `exec()` and
-`system()` functions that exist in C and in higher-level languages
-like Perl, Python, Ruby, etc.  The main difference is that
-`ush` has commands to do things like redirect I/O and change directory,
-just before running the command.
+The `libush` function `ush_argv()` is more or less like
+the `exec()` and `system()` functions that exist in C
+and in higher-level languages like Perl, Python, Ruby, etc.
+The main difference is that `ush` has commands to do things
+just before running the command, like
+redirect I/O, change directory, change privileges, etc.
 
 The reason this is important is that `system()`, for example in Perl,
 pretty much encourages people to run a child shell, if there is any
 need for preparation before running a child process.  If your need
 is that simple, you can just use the list form of the `system()`
 function, and it will `fork()` and `exec()` the command and argument
-vector.  But if you need to redirect I/O, then it is easier to use
+vector.  But if you need to redirect I/O, or change directory
+just prior to running the program, then it is easier to use
 the form of `system()` that takes a single string, which gets passed
 to a child shell for interpretation.  This leads to all sorts of
 potential security problems, possibly even an extra layer of
@@ -78,7 +32,7 @@ do that.  This is not just some hypothetical.  I have seen much code
 in the wild that calls `system()` with shell scripts and even $variable
 substitution.
 
-Modern python is better.  It has subprocess.call(), which allows
+Modern Python is better.  It has subprocess.call(), which allows
 you to redirect stdin, stdout and stderr.
 
 Even those who try to be a bit more careful would have a hard
@@ -94,7 +48,6 @@ So, you have two choices:
 The micro-shell is meant to be a third option, with functionality
 somewhere in the middle.  The idea is to make it relatively easy
 to do the right thing.
-
 
 ## Implementation
 
@@ -294,7 +247,7 @@ but I have not tested it on other Unix-like platforms.
 
 ## Cleanliness
 All of `ush`, `libush` and `lincscript` have been written in
-a subset of C and C++.  It compiles clean using a "super-compler"
+a subset of C and C++.  It compiles clean using a "super-compiler"
 that compiles using:
 
     1. gcc -Wall -Wextra
@@ -318,7 +271,67 @@ arguments grow as needed.
 
 ## Examples
 
+
+### Shell one-liner
+
+```Bash
+
 ush --chdir=/tmp --stdout=tmp-date --command -- date
+
+```
+
+### Calling a `libush` function from C code
+
+```C
+
+    char *cmd_argv[] = {
+        "--fork",
+        "--chdir=/tmp",
+        "--stdout=tmp-date",
+        "--command",
+        "--",
+        "date",
+        NULL
+    };
+
+    ush_argv(6, cmd_argv);
+```
+
+### As a script ...
+
+```Bash
+
+/path/to/script
+
+```
+
+where script is:
+
+
+```Bash
+
+#! /usr/local/bin/ush --encoding=xnn
+
+--append-argv
+--
+ls
+--color=tty
+--time-style=+%Y-%m-%d\x20%H:%M
+
+```
+
+Notice the `--encoding=xnn`.
+In this case it is not really necessary,
+because the `\x20` in the time-style argument is not really
+necessary, because `ush` treats each whole line as an argument,
+and spaces are nothing special.  But, an explicit`\x20`
+makes it more clear the reader that this is a single argument
+with a space in it.
+
+Note also that quote marks do not do any good here.
+They do not serve to ensure that the time-style argument
+is not broken into words.  That does not happen in the first place.
+Quote marks of any kind are not special.
 
 -- Guy Shaw
 

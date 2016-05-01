@@ -172,6 +172,7 @@ the command, `umask -S`.  That is, some subset of
 
     u=rwx,g=rwx,o=rwx
 
+#### I/O redirection
 
 --stdin=_path_
 
@@ -185,6 +186,21 @@ Redirect stdout (fd 1) to the given <path>, for writing.
 
 Redirect stderr (fd 2) to the given <path>, for writing.
 
+The variations for stdout and stderr are:
+
+  --stdout-append=_path_
+  --stderr-append=_path_
+
+  --stdout-new=_path_
+  --stdout-new=_path_
+
+The -new variants assert that the file does not already exist.
+Often, it is important to guard against accidentally writing
+over an existing file.
+
+
+#### Script files
+
 --append-argv
 
 Copy any remaining non-option arguments
@@ -196,7 +212,7 @@ This applies only to interpreting a script file.
 
 If any argument in a script exactly matches the given _string_,
 then splice in all the remaining non-option arguments
-in pace of that one argument.
+in pace of that one argument.  Sort of like what `xargs` does.
 
 This applies only to interpreting a script file.
 
@@ -208,6 +224,15 @@ or null-terminated record, and decode it,
 according the given encoding.
 
 This applies only to interpreting a script file.
+
+## Environment
+
+If either of the environment variables, `USH_DEBUG` and `USH_VERBOSE`
+is present, then it is as if the `--debug` or `--verbose` options
+were given on the command-line or in the command/option section
+of a script.
+This is because it can be easier to turn on and off in the
+environment, rather than edit a script file.
 
 ## Dependencies
 

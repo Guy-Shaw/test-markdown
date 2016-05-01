@@ -44,9 +44,9 @@ Since the original code for 'mmv' was made freely available
 for non-commercial use, those components that are incorporated
 into libmmv are to be considered to be covered under two licenses:
 
-  1) the same license as that of mmv for use in mmv; and
+  1. the same license as that of mmv for use in mmv; and
 
-  2) the GNU Public License for any other use.
+  2. the GNU Public License for any other use.
 
 I am not a lawyer, but I think such dual licensing is doable.
 

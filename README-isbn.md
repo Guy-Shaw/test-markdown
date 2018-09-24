@@ -1,4 +1,6 @@
-# isbn-hyphenate -- Hyphenate an ISBN using International ISBN Agency table
+# isbn-hyphenate
+
+## Hyphenate an ISBN using International ISBN Agency table
 
 Many websites offer ISBN services, [1]
 such as validation, conversion between ISBN-10 <-> ISBN-13,
@@ -21,7 +23,7 @@ published by the International ISBN Agency,
 which is the authoritative source for information about
 ISBN numbers.
 
-  `http://www.isbn-international.org`
+  [ The International ISBN Agency](http://www.isbn-international.org)
 
 From that XML table, `isbn-hyphenate` produces code
 that runs locally, completely self-contained,
@@ -88,22 +90,28 @@ given 'key', just a prefix match at a final state.
 [1]
 Example websites:
 
-  `http://pcn.loc.gov/isbncnvt.html`
+  [Library of Congress](http://pcn.loc.gov/isbncnvt.html)
+
   Library of Congress
+
   PCN := Preassigned Control Number Program
 
   Problem: underlying JavaScript code uses
   hard-code function consisting of a mix of
-  regular exoressions and range checks.
+  regular expressions and range checks.
 
 
-  `https://www.isbn.org/ISBN_converter`
+  [ISBN Converter | ISBN.org](https://www.isbn.org/ISBN_converter)
+
   Problem: Claims to only work for USA and Australia.
-  Problem: Uses JQuery on a non-public set of data.
+
+  Problem: Uses jQuery on a non-public set of data.
 
 
-  `https://www.pearson.com/us/isbn-converter.html`
+  [ISBN Converter for ISBN-10, ISBN-13 & GTIN-14](https://www.pearson.com/us/isbn-converter.html)
+
   Problem: non-public data.
+
   Problem: does not hyphenate.
 
 [2]

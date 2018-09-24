@@ -35,7 +35,7 @@ table to fit in a very small amount of memory.
 So far, there is very little in the way of commands,
 or subcommands or options.
 
-The main() programs is just a primitive test bench.
+The main() program is just a primitive test bench.
 It just takes two arguments:
 the file name of the XML table;
 and an ISBN-13.
@@ -88,7 +88,7 @@ given 'key', just a prefix match at a final state.
 ## Notes
 
 [1]
-Example websites:
+### Example websites:
 
   [Library of Congress](http://pcn.loc.gov/isbncnvt.html)
 
@@ -126,7 +126,7 @@ of scaffolding, etc. working all the time.
 A simple ISBN hyphenator as a web service can be slow,
 unreachable at any time, can be permanently removed.
 The communication overhead typically dwarfs the actual
-computation.  Trying to follow link to find out where the
+computation.  Trying to follow a link to find out where the
 real underlying logic can be very tedious.
 
 

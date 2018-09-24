@@ -87,7 +87,7 @@ given 'key', just a prefix match at a final state.
 
 ## Notes
 
-[1] ### Example websites:
+### [1] Example websites:
 
   [Library of Congress](http://pcn.loc.gov/isbncnvt.html)
 
@@ -96,7 +96,7 @@ given 'key', just a prefix match at a final state.
   PCN := Preassigned Control Number Program
 
   Problem: underlying JavaScript code uses
-  hard-code function consisting of a mix of
+  hard-coded logic, consisting of a mix of
   regular expressions and range checks.
 
 
@@ -113,7 +113,8 @@ given 'key', just a prefix match at a final state.
 
   Problem: does not hyphenate.
 
-[2]
+### [2] Microservices
+
 Microservices, in general tend to be rather opaque,
 and full of dependencies.
 Opaque, not in the way that abstraction is a good thing
@@ -129,7 +130,8 @@ computation.  Trying to follow a link to find out where the
 real underlying logic can be very tedious.
 
 
-[3]
+### [3] Search methods
+
 Of course some hybrid approach is feasible.
 The entire set of prefixes can be partitioned by length;
 then any number of efficient data structures and search methods

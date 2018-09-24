@@ -87,7 +87,7 @@ given 'key', just a prefix match at a final state.
 
 ## Notes
 
-### [1] Example websites:
+### [1] Example websites
 
   [Library of Congress](http://pcn.loc.gov/isbncnvt.html)
 
@@ -99,6 +99,7 @@ given 'key', just a prefix match at a final state.
   hard-coded logic, consisting of a mix of
   regular expressions and range checks.
 
+####
 
   [ISBN Converter | ISBN.org](https://www.isbn.org/ISBN_converter)
 
@@ -106,6 +107,7 @@ given 'key', just a prefix match at a final state.
 
   Problem: Uses jQuery on a non-public set of data.
 
+####
 
   [ISBN Converter for ISBN-10, ISBN-13 & GTIN-14](https://www.pearson.com/us/isbn-converter.html)
 

@@ -87,8 +87,7 @@ given 'key', just a prefix match at a final state.
 
 ## Notes
 
-[1]
-### Example websites:
+[1] ### Example websites:
 
   [Library of Congress](http://pcn.loc.gov/isbncnvt.html)
 

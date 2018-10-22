@@ -9,7 +9,7 @@ Numbers can be given on the command line or from one or more files
 or from `stdin`.
 
 The result is usually a series of approximations,
-Listed in order, from tighter tolerances down to looser tolerances.
+listed in order, from tighter tolerances down to looser tolerances.
 The following information is shown for each candidate fraction:
 
   1. the fraction: numerator/denominator
@@ -29,12 +29,15 @@ There are options to show results only for fractions that are over
 This way of filtering the candidates can be useful,
 for example, in cases where approximations that are too small
 are not acceptable for the intended use.  For example,
-the exact buffer size needed for convering an unsigned integer
+the exact buffer size needed for converting an unsigned integer
 of a given bit size is
 
-  $ceil(log(2)/log(10)) * nbits$
+```
+  ceil(log(2)/log(10)) * nbits
+```
 
 where |nbits| might typically be 16, 32, or 64.
+
 log(2)/log(10) is 0.301029995663981.
 
 59/196 is a fraction within 0.003 percent,
@@ -104,7 +107,9 @@ where use of floating-point arithmetic is forbidden.
 ## Acknowledgements
 
 The heart of the computation is lifted from the following
-code from `comp.programming`, which is based on a paper
+code from `comp.programming`,
+
+which is based on a paper
 by John Canny, Bruce Donald, and Gene Ressler.
 
 ```
